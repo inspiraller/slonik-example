@@ -1,0 +1,24 @@
+{
+  "name": "slonik-example",
+  "version": "0.1.0",
+  "keywords": [
+    "slonik",
+    "node"
+  ],
+  "repository": {
+    "url": "https://github.com/inspiraller/slonik-example"
+  },
+  "authors": [
+    "Steve Tomlin <steve@stcreative.co.uk> (https://github.com/inspiraller)"
+  ],
+  "scripts": {
+    "db": "cd postgres-db && docker-compose --env-file \"../.env\" up",
+    "server": "cd node-app && npm start",
+    "db-clear-volume": "docker volume rm postgres-db_postgresql && docker volume rm postgres-db_postgresql_data",
+    "db-clear": "cd postgres-db && docker-compose down && npm run db-clear-volume"
+  },
+  "dependencies": {
+    "concurrently": "^7.2.1",
+    "dotenv": "^16.0.1"
+  }
+}

@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  db:
+    container_name: todos
+    image: postgres:12
+    environment:
+      # How to connect (Need to specify actual database aswell as user)
+      # docker exec -it postgres_todos psql -U postgres_todos_user -d postgres_todos_db 
+      - POSTGRES_DB=${PG_DB}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PWD}
+    ports:
+          - "5432:5432"
+    volumes:
+      - postgresql:/var/lib/postgresql
+      # This needs explicit mapping due to https://github.com/docker-library/postgres/blob/4e48e3228a30763913ece952c611e5e9b95c8759/Dockerfile.template#L52
+      - postgresql_data:/var/lib/postgresql/data
+
+volumes:
+  # Will create docker volume with name of the container folder: sql/postgresql = sql_postgresql
+  ## example remove:  docker volume rm  sql_postgresql
+  postgresql:
+  postgresql_data:
+
+
