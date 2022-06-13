@@ -34,13 +34,13 @@ const init = () => {
       //   - Could it be because sql`` wraps the variable in a single quote
       //   - So it would look like this: CREATE TABLE 'todos'
 
-      if (!isExist) {
-        const query2 = sql`CREATE TABLE ${PG_TABLE}(id SERIAL PRIMARY KEY, name VARCHAR(500) NOT NULL, completed BOOLEAN NOT NULL);`;
-        console.log('CREATE TABLE query=', { query2 });
+      // if (!isExist) {
+      //   const query2 = sql`CREATE TABLE ${PG_TABLE}(id SERIAL PRIMARY KEY, name VARCHAR(500) NOT NULL, completed BOOLEAN NOT NULL);`;
+      //   console.log('CREATE TABLE query=', { query2 });
 
-        const result2 = await connection.query(query2);
-        console.log("CREATE TABLE result -", { result2 });
-      }
+      //   const result2 = await connection.query(query2);
+      //   console.log("CREATE TABLE result -", { result2 });
+      // }
 
     } catch (err) {
       console.log(err);

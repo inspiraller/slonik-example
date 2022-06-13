@@ -27,6 +27,12 @@
 -------------------
 # Kill db
 - npm run db-clear
+- docker image ls
+
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+postgres     12        08644498ca7b   7 minutes ago   376MB
+
+- docker image rm 08644498ca7b
 
 ***expected**
 - Will Stop the docker container for postgres-db
