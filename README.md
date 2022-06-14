@@ -21,7 +21,7 @@
 - npm run server
 
 ***expected***
-- Will run docker-compose to download and run postgres on local port
+- Will run docker-compose to download and run postgres on local port **(and seed db with a table name declared in .env file)**
 - Will run node-app/src/server.ts - to connect to local port for postgres
 
 -------------------
