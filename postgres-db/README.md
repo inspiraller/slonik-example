@@ -8,7 +8,7 @@ docker exec -it todos          psql     -U postgres_todos_user -d postgres_todos
 
 # Search if table exist
 ```
-SELECT EXISTS (SELECT FROM pg_tables WHERE tablename  = todos);
+SELECT EXISTS (SELECT FROM pg_tables WHERE tablename  = 'todos');
 ```
 
 # Create table
