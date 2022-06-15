@@ -20,9 +20,15 @@ const init = () => {
 
   pool.connect(async (connection) => {
     try {
-      const result = await connection.query(sql`SELECT EXISTS (SELECT FROM pg_tables WHERE tablename  = ${PG_TABLE});`);
-      const isExist = result.rows[0].exists;
+      const resultExist = await connection.query(sql`SELECT EXISTS (SELECT FROM pg_tables WHERE tablename  = ${PG_TABLE});`);
+      const isExist = resultExist.rows[0].exists;
       console.log('SELECT EXISTS =', {isExist})
+
+
+      // NOTE: Could we have used sql.identifier to also create table?
+      const resultRows = await connection.query(sql`SELECT * FROM ${sql.identifier([PG_TABLE])} ORDER BY id ASC`);
+      console.log('resultRows', {resultRows})
+
 
       // WORKS
       // const query2 = sql`CREATE TABLE todos(id SERIAL PRIMARY KEY, name VARCHAR(500) NOT NULL, completed BOOLEAN NOT NULL);`;

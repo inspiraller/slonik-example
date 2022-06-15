@@ -37,3 +37,7 @@ postgres     12        08644498ca7b   7 minutes ago   376MB
 ***expected**
 - Will Stop the docker container for postgres-db
 - Will clear the data in the database
+
+## Remove image if needing to rebuild
+docker image ls
+docker image rm id
