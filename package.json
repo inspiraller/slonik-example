@@ -14,7 +14,7 @@
   "scripts": {
     "db": "cd postgres-db && docker-compose --env-file \"../.env\" up --build",
     "server": "cd node-app && npm start",
-    "db-clear-volume": "docker volume rm postgres-db_postgresql",
+    "db-clear-volume": "docker volume rm postgresql_pgdata",
     "db-clear": "cd postgres-db && docker-compose down && npm run db-clear-volume"
   },
   "dependencies": {

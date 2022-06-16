@@ -1,4 +1,5 @@
 FROM postgres
+# Env variable is not sufficient here. Need arg.
 ARG PG_TABLE
 ADD seed.sql /docker-entrypoint-initdb.d/seed.sql
 

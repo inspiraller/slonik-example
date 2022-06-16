@@ -16,7 +16,7 @@ SELECT EXISTS (SELECT FROM pg_tables WHERE tablename = 'todos');
 
 # Search files 
 ```
-SELECT * FROM pg_tables ORDER BY id ASC`;
+SELECT * FROM todos ORDER BY id ASC;
 ```
 
 # view db
