@@ -22,14 +22,14 @@ services:
       # - POSTGRES_MULTIPLE_DATABASES=db1,db2
 
     ports:
-          - "5432:6666"
+          - "5432:5432"
     volumes:
       - ./data:/data
  
     restart: unless-stopped
-# volumes:
-  # Will create docker volume with name of the container folder: sql/postgresql = sql_postgresql
+volumes:
+  # Will create docker volume with name of the container folder: postgresql/data = postgresql_data
   # How to removee:  docker volume rm  sql_postgresql
-  # pgdata:
+  pgdata:
 
 
