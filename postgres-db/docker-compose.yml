@@ -2,7 +2,7 @@ version: "2"
 
 services:
   db:
-    container_name: todos
+    container_name: container-db
     image: postgres:12
     environment:
       - POSTGRES_DB=$PG_DB
