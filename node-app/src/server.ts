@@ -22,31 +22,11 @@ const init = () => {
     try {
       const resultExist = await connection.query(sql`SELECT EXISTS (SELECT FROM pg_tables WHERE tablename  = ${PG_TABLE});`);
       const isExist = resultExist.rows[0].exists;
-      console.log('SELECT EXISTS =', {isExist})
+      console.log('DB exists =', {isExist})
 
-
-      // NOTE: Could we have used sql.identifier to also create table?
+      // NOTE: Could need to use sql.identifier to reference dynamic table name.
       const resultRows = await connection.query(sql`SELECT * FROM ${sql.identifier([PG_TABLE])} ORDER BY id ASC`);
-      console.log('resultRows', {resultRows})
-
-
-      // WORKS
-      // const query2 = sql`CREATE TABLE todos(id SERIAL PRIMARY KEY, name VARCHAR(500) NOT NULL, completed BOOLEAN NOT NULL);`;
-  
-      // DOES NOT WORK 
-      // const query2 = sql`CREATE TABLE ${PG_TABLE}(id SERIAL PRIMARY KEY, name VARCHAR(500) NOT NULL, completed BOOLEAN NOT NULL);`;
-      // - cannot pass dynamic variable to CREATE TABLE ${PG_TABLE}
-      // - cause:
-      //   - Could it be because sql`` wraps the variable in a single quote
-      //   - So it would look like this: CREATE TABLE 'todos'
-
-      // if (!isExist) {
-      //   const query2 = sql`CREATE TABLE ${PG_TABLE}(id SERIAL PRIMARY KEY, name VARCHAR(500) NOT NULL, completed BOOLEAN NOT NULL);`;
-      //   console.log('CREATE TABLE query=', { query2 });
-
-      //   const result2 = await connection.query(query2);
-      //   console.log("CREATE TABLE result -", { result2 });
-      // }
+      console.log('TABLE ROWS EXIST', {resultRows})
 
     } catch (err) {
       console.log(err);
