@@ -25,7 +25,7 @@ services:
 
     restart: unless-stopped
 volumes:
-  # Will create docker volume with name of the container folder: postgresql/pgdata = postgresql_pgdata
+  # Will create docker volume with name of the container folder: postgres-db_pgdata/**/pgdata = postgres-db_pgdata
   pgdata:
 
 
