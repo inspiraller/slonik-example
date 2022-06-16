@@ -6,9 +6,17 @@
 // connect      containername  language username               database
 docker exec -it todos          psql     -U postgres_todos_user -d postgres_todos_db
 
+# or debug
+docker exec -it todos bash
+
 # Search if table exist
 ```
 SELECT EXISTS (SELECT FROM pg_tables WHERE tablename = 'todos');
+```
+
+# Search files 
+```
+SELECT * FROM pg_tables ORDER BY id ASC`;
 ```
 
 # view db

@@ -11,6 +11,7 @@ services:
       - POSTGRES_USER=$PG_USER
       - POSTGRES_PASSWORD=$PG_PWD
       - PG_TABLE=$PG_TABLE # for Dockerfile and script
+      - PGDATA=/tmp # fix - initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
 
    # This is the way to run a bash script to pass variables to seed.sql.
    # note: must run docker-compose up --build
@@ -21,13 +22,14 @@ services:
       # - POSTGRES_MULTIPLE_DATABASES=db1,db2
 
     ports:
-          - "5432:5432"
+          - "5432:6666"
     volumes:
-      - postgresql:/var/lib/postgresql
+      - ./data:/data
+ 
     restart: unless-stopped
-volumes:
+# volumes:
   # Will create docker volume with name of the container folder: sql/postgresql = sql_postgresql
   # How to removee:  docker volume rm  sql_postgresql
-  postgresql:
+  # pgdata:
 
 
